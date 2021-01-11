@@ -1,0 +1,34 @@
+# Classes
+module ChatApp
+  VERSION: String
+
+  class User
+    attr_reader login: String
+    attr_reader email: String
+    def initialize: (login: String, email: String) -> [String, String]
+  end
+
+  class Bot
+    attr_reader name: String
+    attr_reader email: String
+    attr_reader owner: User
+    def initialize: (name: String, owner: User) -> [String, User]
+  end
+
+  class Message
+    attr_reader id: String
+    attr_reader string: String
+    attr_reader from: Bot | User
+    attr_reader reply_to: Message?
+    def initialize: (from: Bot | User, string: String) -> ([Bot | User, String, nil])
+    def reply: (from: Bot | User, string: String) -> Message
+  end
+
+  class Channel
+    attr_reader name: String
+    attr_reader messages: Array[bot]
+    attr_reader users: Array[bot]
+    attr_reader bots: Array[bot]
+    def initialize: (name: String) -> [String, Array[bot], Array[bot], Array[bot]]
+  end
+end
